@@ -88,7 +88,7 @@ defmodule ExHexo.GenHtml do
     assigns = init_assigns(config)
 
     # posts
-    Path.join(config.source_dir, "posts/*.md")
+    Path.join(config.source_dir, "posts/*.{md, markdown}")
     |> Path.wildcard()
     |> async_tasks(&gen_post!(&1, assigns))
 

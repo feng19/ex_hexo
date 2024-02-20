@@ -195,6 +195,7 @@ defmodule ExHexo.Post do
     |> elem(0)
   end
 
+  @compile {:no_warn_undefined, {EarmarkParser, :as_ast, 2}}
   defp transform_markdown(markdown_string, options) do
     {:ok, ast, _messages} = EarmarkParser.as_ast(markdown_string, options)
     toc = build_toc(ast)

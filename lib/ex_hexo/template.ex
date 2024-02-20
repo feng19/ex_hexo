@@ -103,7 +103,7 @@ defmodule ExHexo.Template do
         end
 
       {:error, error} ->
-        Logger.warn(error <> " when gen file: #{file}.")
+        Logger.warning(error <> " when gen file: #{file}.")
         {path, :error}
     end
   end

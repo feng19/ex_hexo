@@ -28,11 +28,9 @@ defmodule ExHexo.Render.Helper do
   end
 
   defmacro render_component(eex, new_assigns \\ []) do
-    Path.join("components", eex)
-    |> Template.find_eex()
-    |> case do
+    case Template.find_eex("components", eex) do
       nil ->
-        Logger.warn("can not found #{eex} on components dirs.")
+        Logger.warning("can not found #{eex} on components dirs.")
         nil
 
       file ->
@@ -49,7 +47,7 @@ defmodule ExHexo.Render.Helper do
         end
 
       {:error, error} ->
-        Logger.warn(error)
+        Logger.warning(error)
         nil
     end
   end
